@@ -16,6 +16,7 @@
   "author": "Daniel Wojnar & Szczepan Bułat",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "enquirer": "^2.3.4"
   }
 }
