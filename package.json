@@ -1,0 +1,21 @@
+{
+  "name": "lunchnow-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "preferGlobal": true,
+  "engines": {
+    "node": "8 || 9 || 10 11 12"
+  },
+  "bin": {
+    "lunchnow": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Wojnar & Szczepan Bułat",
+  "license": "ISC",
+  "dependencies": {
+    "enquirer": "^2.3.4"
+  }
+}
