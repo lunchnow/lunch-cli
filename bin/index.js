@@ -14,5 +14,3 @@ const questions = prompt([
     message: 'When do you want to go?'
   }
 ]);
-
-console.log(questions); // { name: 'Edward Chan', username: 'edwardmchan' }
