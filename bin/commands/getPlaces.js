@@ -1,11 +1,17 @@
 const axios = require('axios')
 const chalk = require('chalk');
+const fetch = require('node-fetch');
 
-const apiUrl = "https://swapi.co/api/people";
+// const apiUrl;
 
 module.exports = function() {
-  axios.get("https://swapi.co/api/people/1").then(response => {
-    let { name } = response.data
-    console.log(chalk.blue.bold(name))
-  })
+  fetch("https://946aa1f3.ngrok.io/places")
+    .then(response => response.json())
+    .then(json => {
+
+      let places = json.places;
+      json.places.forEach((element, _index) => {
+        console.log(element)
+      });
+    }).catch(error => console.log(error))
 };

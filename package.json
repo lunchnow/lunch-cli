@@ -1,8 +1,7 @@
 {
   "name": "lunchnow-cli",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Revolution on the market",
   "preferGlobal": true,
   "engines": {
     "node": "8 || 9 || 10 11 12"
