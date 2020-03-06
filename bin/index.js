@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const { prompt } = require('enquirer');
+const axios = require('axios');
 
 const questions = prompt([
   {
@@ -14,3 +15,26 @@ const questions = prompt([
     message: 'When do you want to go?'
   }
 ]);
+
+async function createLunchItem(data) {
+  let url = "https://webhook.site/768f279e-b5ff-485c-a2fe-8bfc38f2ff0a"
+  axios.post(url, {
+    place: 'Stara',
+    time: '13:00'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
+
+async function getData() {
+  let data = await questions;
+
+  createLunchItem(questions)
+}
+
+getData();
