@@ -1,19 +1,6 @@
 const { prompt } = require('enquirer');
 const fetch = require('node-fetch');
 
-const questions = prompt([
-  {
-    type: 'input',
-    name: 'place',
-    message: 'Where do you want to go?'
-  },
-  {
-    type: 'input',
-    name: 'time',
-    message: 'When do you want to go?'
-  }
-]);
-
 async function createLunchItem(data) {
   let url = "https://webhook.site/768f279e-b5ff-485c-a2fe-8bfc38f2ff0a"
   fetch.post(url, {
@@ -30,12 +17,23 @@ async function createLunchItem(data) {
 
 
 async function getData() {
+  const questions = prompt([
+    {
+      type: 'input',
+      name: 'place',
+      message: 'Where do you want to go?'
+    },
+    {
+      type: 'input',
+      name: 'time',
+      message: 'When do you want to go?'
+    }
+  ]);
   let data = await questions;
 
-  createLunchItem(questions)
+  createLunchItem(data)
 }
 
-
-module.exports = function() {
+module.exports = async () => {
   getData()
-};
+}
