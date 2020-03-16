@@ -6,7 +6,7 @@ async function createLunchItem(data) {
   let url = "https://ec2ffc4c.ngrok.io/lunches"
   let { place, time } = data;
 
-  axios.post(url, {
+  await axios.post(url, {
     place: place,
     time: time
   })
@@ -48,8 +48,8 @@ async function getData() {
     }
   ]);
 
-  let place = selectInput.run();
-  let time = questionsInput;
+  let place = await selectInput.run();
+  let time = await questionsInput.time;
 
   const answers = {
     place: place,
