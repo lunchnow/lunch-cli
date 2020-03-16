@@ -1,9 +1,10 @@
 const { prompt } = require('enquirer');
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 async function createLunchItem(data) {
-  let url = "https://webhook.site/768f279e-b5ff-485c-a2fe-8bfc38f2ff0a"
-  fetch.post(url, {
+  let url = "https://ec2ffc4c.ngrok.io/lunches"
+  debugger;
+  axios.post(url, {
     place: 'Stara',
     time: '13:00'
   })

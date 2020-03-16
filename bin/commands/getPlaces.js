@@ -1,16 +1,23 @@
 const chalk = require('chalk');
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 // const apiUrl;
 
-module.exports = function() {
-  fetch("https://946aa1f3.ngrok.io/places")
-    .then(response => response.json())
-    .then(json => {
+async function getPlaces() {
+  try {
+    const response = await axios.get("https://ec2ffc4c.ngrok.io/places")
+    const places = response.data.places;
 
-      let places = json.places;
-      json.places.forEach((element, _index) => {
-        console.log(element)
-      });
-    }).catch(error => console.log(error))
+    places.forEach(place => {
+      let color = Math.floor(Math.random()*16777215).toString(16);
+      // console.log(chalk.blue(place))
+      console.log(chalk.hex(color).bold(place));
+    });
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+module.exports = () => {
+  getPlaces()
 };
