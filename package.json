@@ -1,8 +1,7 @@
 {
   "name": "lunchnow-cli",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Revolution on the market",
   "preferGlobal": true,
   "engines": {
     "node": "8 || 9 || 10 11 12"
@@ -16,6 +15,18 @@
   "author": "Daniel Wojnar & Szczepan Bułat",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
+    "chalk": "^3.0.0",
+    "commander": "^4.1.1",
+    "configstore": "^5.0.1",
     "enquirer": "^2.3.4"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
