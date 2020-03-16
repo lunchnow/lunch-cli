@@ -1,15 +1,19 @@
 const { prompt } = require('enquirer');
 const axios = require('axios');
+const chalk = require('chalk');
 
 async function createLunchItem(data) {
   let url = "https://ec2ffc4c.ngrok.io/lunches"
-  debugger;
+  let { place, time } = data;
+
   axios.post(url, {
-    place: 'Stara',
-    time: '13:00'
+    place: place,
+    time: time
   })
   .then(function (response) {
-    console.log(response);
+
+    const responseMessage = `Chcesz iść do ${place} o ${time}`;
+    console.log(chalk.bold.red(responseMessage));
   })
   .catch(function (error) {
     console.log(error);
