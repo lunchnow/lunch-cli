@@ -1,4 +1,4 @@
-const { prompt } = require('enquirer');
+const { prompt, Select } = require('enquirer');
 const axios = require('axios');
 const chalk = require('chalk');
 
@@ -10,7 +10,7 @@ async function createLunchItem(data) {
     place: place,
     time: time
   })
-  .then(function (response) {
+  .then(_response => {
 
     const responseMessage = `Chcesz iść do ${place} o ${time}`;
     console.log(chalk.bold.red(responseMessage));
@@ -21,22 +21,41 @@ async function createLunchItem(data) {
 }
 
 
+const getPlaces = async function() {
+  try {
+    const response = await axios.get("https://ec2ffc4c.ngrok.io/places")
+    const places = response.data.places;
+    return places;
+  } catch (error) {
+    console.log(error)
+  }
+};
+
 async function getData() {
-  const questions = prompt([
-    {
-      type: 'input',
-      name: 'place',
-      message: 'Where do you want to go?'
-    },
+  const places = await getPlaces();
+
+  const selectInput = new Select({
+    name: 'place',
+    message: 'Where do you want to go?',
+    choices: [...places]
+  });
+
+  const questionsInput = await prompt([
     {
       type: 'input',
       name: 'time',
       message: 'When do you want to go?'
     }
   ]);
-  let data = await questions;
 
-  createLunchItem(data)
+  let place = selectInput.run();
+  let time = questionsInput;
+
+  const answers = {
+    place: place,
+    time: time
+  }
+  createLunchItem(answers)
 }
 
 module.exports = async () => {

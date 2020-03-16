@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 const axios = require('axios');
 
+
 // const apiUrl;
 
 async function getPlaces() {
