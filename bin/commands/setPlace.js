@@ -43,19 +43,30 @@ async function getData() {
   const questionsInput = await prompt([
     {
       type: 'input',
+      name: 'username',
+      message: "What's your name?"
+    },
+    {
+      type: 'input',
       name: 'time',
       message: 'When do you want to go?'
     }
   ]);
 
-  let place = await selectInput.run();
-  let time = await questionsInput.time;
+  const place = await selectInput.run();
+  const questionsData = questionsInput;
+  const time = questionsData.time;
+  const name = questionsData.username;
 
   const answers = {
     place: place,
-    time: time
+    time: time,
+    username: name
   }
-  createLunchItem(answers)
+
+
+  process.env['LCLI_USERNAME'] = name;
+  createLunchItem(answers);
 }
 
 module.exports = async () => {

@@ -4,7 +4,6 @@ const axios = require('axios');
 const program = require('commander');
 const chalk = require('chalk');
 
-
 const getPlaces = require("./commands/getPlaces");
 const setPlace = require("./commands/setPlace");
 
