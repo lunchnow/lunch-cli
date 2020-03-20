@@ -1,9 +1,10 @@
 const { prompt, Select } = require('enquirer');
 const axios = require('axios');
 const chalk = require('chalk');
+const apiUrl = "http://127.0.0.1:2700"
 
 async function createLunchItem(data) {
-  let url = "https://ec2ffc4c.ngrok.io/lunches"
+  let url = `${apiUrl}/lunches`
   let { place, time } = data;
 
   await axios.post(url, {
@@ -23,7 +24,7 @@ async function createLunchItem(data) {
 
 const getPlaces = async function() {
   try {
-    const response = await axios.get("https://ec2ffc4c.ngrok.io/places")
+    const response = await axios.get(`${apiUrl}/places`)
     const places = response.data.places;
     return places;
   } catch (error) {

@@ -1,12 +1,12 @@
 const chalk = require('chalk');
 const axios = require('axios');
-
+const apiUrl = "http://127.0.0.1:2700"
 
 // const apiUrl;
 
 async function getPlaces() {
   try {
-    const response = await axios.get("https://ec2ffc4c.ngrok.io/places")
+    const response = await axios.get(`${apiUrl}/places`)
     const places = response.data.places;
 
     places.forEach(place => {
