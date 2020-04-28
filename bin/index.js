@@ -4,7 +4,7 @@ const axios = require('axios');
 const program = require('commander');
 const chalk = require('chalk');
 
-const getPlaces = require("./commands/getPlaces");
+const getPlaces = require("./commands/getPlacesCommand");
 const setPlace = require("./commands/setPlace");
 
 
@@ -34,5 +34,3 @@ if (!process.argv.slice(2).length) {
 
 program.parse(process.argv);
 
-
-// getData();

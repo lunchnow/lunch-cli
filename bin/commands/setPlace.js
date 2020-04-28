@@ -2,8 +2,12 @@ const { prompt, Select } = require('enquirer');
 const axios = require('axios');
 const chalk = require('chalk');
 
+const places = require('../../src/fetchers/places.js');
+
+const apiUrl = "http://127.0.0.1:2700"
+
 async function createLunchItem(data) {
-  let url = "https://ec2ffc4c.ngrok.io/lunches"
+  let url = `${apiUrl}/lunches`
   let { place, time } = data;
 
   await axios.post(url, {
@@ -20,24 +24,13 @@ async function createLunchItem(data) {
   });
 }
 
-
-const getPlaces = async function() {
-  try {
-    const response = await axios.get("https://ec2ffc4c.ngrok.io/places")
-    const places = response.data.places;
-    return places;
-  } catch (error) {
-    console.log(error)
-  }
-};
-
 async function getData() {
-  const places = await getPlaces();
+  const placesResult = await places();
 
   const selectInput = new Select({
     name: 'place',
     message: 'Where do you want to go?',
-    choices: [...places]
+    choices: [...placesResult]
   });
 
   const questionsInput = await prompt([

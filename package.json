@@ -1,10 +1,10 @@
 {
   "name": "lunchnow-cli",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Revolution on the market",
   "preferGlobal": true,
   "engines": {
-    "node": "8 || 9 || 10 11 12"
+    "node": "8 || 9 || 10 || 11 || 12"
   },
   "bin": {
     "lunchnow": "./bin/index.js"
