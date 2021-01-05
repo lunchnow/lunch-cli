@@ -15,7 +15,7 @@
   "author": "Daniel Wojnar & Szczepan Bułat",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chalk": "^3.0.0",
     "commander": "^4.1.1",
     "configstore": "^5.0.1",
